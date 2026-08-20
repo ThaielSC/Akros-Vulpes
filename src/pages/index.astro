@@ -1,11 +1,465 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Akros Vulpes | Formula SAE UANDES">
+  <!-- ==============================
+       HERO SECTION with Parallax Layers
+       ============================== -->
+  <section class="hero">
+    <!-- Parallax background layers -->
+    <div class="parallax-container" aria-hidden="true">
+      <div class="parallax-layer layer-grid" data-speed="0.1"></div>
+      <div class="parallax-layer layer-glow-left" data-speed="0.15"></div>
+      <div class="parallax-layer layer-glow-right" data-speed="0.25"></div>
+      <div class="parallax-layer layer-lines" data-speed="0.3"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="tech-tag font-tech" transition:name="hero-tag">FORMULA SAE // UNIVERSIDAD DE LOS ANDES</div>
+      <h1 class="hero-title">
+        <span class="title-line">RACING FROM</span>
+        <span class="title-line title-accent text-gradient-red">THE ANDES</span>
+      </h1>
+      <p class="hero-desc">
+        Diseño, manufactura y pasión. La escudería de competición de la UANDES creada para desafiar las leyes de la física y formar a los ingenieros del mañana.
+      </p>
+      
+      <div class="hero-actions">
+        <a href="/auto" class="btn-racing"><span>Ver Monoplaza</span></a>
+        <a href="/sponsors#contacto" class="btn-racing-secondary"><span>Postular al Equipo</span></a>
+      </div>
+    </div>
+    
+    <div class="hero-stats font-tech">
+      <div class="stat-box">
+        <span class="stat-num text-gradient-gold">40+</span>
+        <span class="stat-label">MIEMBROS ACTIVOS</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-box">
+        <span class="stat-num text-gradient-gold">01</span>
+        <span class="stat-label">MONOPLAZA CV</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-box">
+        <span class="stat-num text-gradient-gold">3,500+</span>
+        <span class="stat-label">HORAS DE DISEÑO</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================
+       ABOUT / IDENTITY SECTION
+       ============================== -->
+  <section class="about">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="tech-tag font-tech">THE BRAND // EL CONCEPTO</div>
+        <h2 class="about-title">Espíritu <span class="text-gradient-red">Culpeo</span></h2>
+        <p>
+          Nuestro nombre nace de la conjunción de dos fuerzas: <strong>Akros</strong> (en griego, <em>altura</em> o <em>cumbre</em>), haciendo referencia a la cordillera de los Andes que custodia nuestro campus universitario; y <strong>Vulpes</strong> (en latín, <em>zorro</em>), en honor al <strong>Zorro Culpeo</strong>. 
+        </p>
+        <p>
+          Este depredador cordillerano destaca por su agilidad, resiliencia y astucia para sobrevivir en terrenos hostiles. Esas mismas cualidades inspiran nuestra filosofía de diseño: crear un vehículo compacto, reactivo y de alta ingeniería.
+        </p>
+        <div class="about-cta">
+          <a href="/equipo" class="btn-racing-secondary"><span>Conocer al Equipo</span></a>
+        </div>
+      </div>
+      
+      <div class="about-visual bevel-card blueprint-grid">
+        <div class="visual-badge font-tech">TEAM LOGO ARCHIVE</div>
+        <div class="placeholder-logo">
+          <svg viewBox="0 0 100 100" class="logo-svg">
+            <polygon points="10,80 40,30 60,60 85,30 90,80" fill="none" stroke="var(--color-gris-andino)" stroke-width="2" />
+            <polygon points="20,80 50,20 80,80" fill="none" stroke="var(--color-oro-andino)" stroke-width="3" />
+            <polygon points="50,45 35,60 42,62 50,75 58,62 65,60" fill="none" stroke="var(--color-rojo-culpeo)" stroke-width="3" />
+            <circle cx="45" cy="58" r="2" fill="var(--color-blanco-hueso)" />
+            <circle cx="55" cy="58" r="2" fill="var(--color-blanco-hueso)" />
+          </svg>
+          <span class="font-tech placeholder-label">AKROS VULPES LOGO CONCEPT</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================
+       PAGES NAVIGATION CARDS
+       Quick links to the other pages
+       ============================== -->
+  <section class="nav-cards-section">
+    <div class="section-header">
+      <div class="tech-tag font-tech">EXPLORE // NAVIGATE</div>
+      <h2 class="section-title">Descubre <span class="text-gradient-red">Más</span></h2>
+    </div>
+
+    <div class="nav-cards-grid">
+      <a href="/desarrollo" class="nav-card bevel-card">
+        <span class="card-num font-tech">01</span>
+        <h3>Desarrollo</h3>
+        <p>Fases de manufactura y construcción del monoplaza de combustión.</p>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a href="/auto" class="nav-card bevel-card">
+        <span class="card-num font-tech">02</span>
+        <h3>El Auto</h3>
+        <p>Especificaciones técnicas, blueprint vectorial y telemetría del CV-01.</p>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a href="/equipo" class="nav-card bevel-card">
+        <span class="card-num font-tech">03</span>
+        <h3>El Equipo</h3>
+        <p>Nuestras divisiones de ingeniería, aerodinámica, electrónica y más.</p>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a href="/sponsors" class="nav-card bevel-card">
+        <span class="card-num font-tech">04</span>
+        <h3>Sponsors</h3>
+        <p>Alianzas comerciales, contacto y formulario de postulación.</p>
+        <span class="card-arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ==============================
+       PARALLAX SCROLLYTELLING SCRIPT
+       ============================== -->
+  <script>
+    function initParallax() {
+      const layers = document.querySelectorAll('[data-speed]');
+      
+      function onScroll() {
+        const scrollY = window.scrollY;
+        layers.forEach((layer) => {
+          const speed = parseFloat(layer.getAttribute('data-speed') || '0');
+          const yOffset = -(scrollY * speed);
+          (layer as HTMLElement).style.transform = `translate3d(0, ${yOffset}px, 0)`;
+        });
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      // Initial call
+      onScroll();
+    }
+
+    initParallax();
+    document.addEventListener('astro:after-swap', initParallax);
+  </script>
 </Layout>
+
+<style>
+  /* ========== HERO ========== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 8rem 2rem 4rem 2rem;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  /* Parallax Layers */
+  .parallax-container {
+    position: absolute;
+    inset: -20%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .parallax-layer {
+    position: absolute;
+    inset: 0;
+    will-change: transform;
+  }
+
+  /* Grid pattern layer */
+  .layer-grid {
+    background-size: 60px 60px;
+    background-image: 
+      linear-gradient(to right, rgba(138, 138, 130, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(138, 138, 130, 0.04) 1px, transparent 1px);
+  }
+
+  /* Ambient glow: left side (terracota) */
+  .layer-glow-left {
+    background: radial-gradient(
+      ellipse 500px 600px at 10% 60%,
+      rgba(193, 82, 42, 0.08),
+      transparent 70%
+    );
+  }
+
+  /* Ambient glow: right side (rojo culpeo) */
+  .layer-glow-right {
+    background: radial-gradient(
+      ellipse 400px 500px at 85% 25%,
+      rgba(139, 58, 31, 0.1),
+      transparent 70%
+    );
+  }
+
+  /* Diagonal speed lines */
+  .layer-lines {
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 80px,
+      rgba(138, 138, 130, 0.02) 80px,
+      rgba(138, 138, 130, 0.02) 81px
+    );
+  }
+
+  /* Hero Content */
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin-bottom: 4rem;
+  }
+
+  .hero-title {
+    font-size: 5rem;
+    line-height: 0.95;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    font-style: italic;
+    letter-spacing: -0.04em;
+  }
+
+  .title-line {
+    display: block;
+  }
+
+  .title-accent {
+    font-size: 5.5rem;
+  }
+
+  .hero-desc {
+    font-size: 1.2rem;
+    color: var(--color-blanco-hueso);
+    opacity: 0.8;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+
+  /* Hero Stats */
+  .hero-stats {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    border-top: 1px dashed rgba(138, 138, 130, 0.2);
+    padding-top: 2.5rem;
+    width: 100%;
+    max-width: 900px;
+  }
+
+  .stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stat-num {
+    font-size: 2.25rem;
+    font-weight: 800;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    color: var(--color-gris-andino);
+    margin-top: 0.25rem;
+    letter-spacing: 0.1em;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(138, 138, 130, 0.2);
+  }
+
+  /* ========== ABOUT ========== */
+  .about {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: var(--section-padding);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .about-title {
+    font-size: 2.5rem;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-text p {
+    color: var(--color-gris-andino);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-cta {
+    margin-top: 2rem;
+  }
+
+  .about-visual {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 350px;
+  }
+
+  .visual-badge {
+    position: absolute;
+    top: 1.25rem;
+    left: 1.25rem;
+    font-size: 0.7rem;
+    color: var(--color-oro-andino);
+    letter-spacing: 0.1em;
+    z-index: 1;
+  }
+
+  .placeholder-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    z-index: 1;
+  }
+
+  .logo-svg {
+    width: 160px;
+    height: 160px;
+  }
+
+  .placeholder-label {
+    font-size: 0.75rem;
+    color: var(--color-gris-andino);
+    letter-spacing: 0.15em;
+  }
+
+  /* ========== NAVIGATION CARDS ========== */
+  .nav-cards-section {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: var(--section-padding);
+  }
+
+  .nav-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .nav-card {
+    padding: 2.5rem 2rem;
+    text-decoration: none;
+    color: var(--color-blanco-hueso);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: transform 0.3s ease;
+  }
+
+  .nav-card:hover {
+    transform: translateY(-6px);
+  }
+
+  .card-num {
+    font-size: 0.85rem;
+    color: var(--color-rojo-culpeo);
+    letter-spacing: 0.1em;
+  }
+
+  .nav-card h3 {
+    font-size: 1.3rem;
+    font-style: italic;
+  }
+
+  .nav-card p {
+    color: var(--color-gris-andino);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    flex-grow: 1;
+  }
+
+  .card-arrow {
+    font-size: 1.5rem;
+    color: var(--color-gris-andino);
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .nav-card:hover .card-arrow {
+    color: var(--color-oro-andino);
+    transform: translateX(4px);
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 900px) {
+    .hero-title {
+      font-size: 3.5rem;
+    }
+    .title-accent {
+      font-size: 4rem;
+    }
+    .hero-stats {
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .stat-divider {
+      width: 40px;
+      height: 1px;
+    }
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .about-visual {
+      height: 280px;
+    }
+    .nav-cards-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hero-title {
+      font-size: 2.75rem;
+    }
+    .title-accent {
+      font-size: 3rem;
+    }
+    .nav-cards-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

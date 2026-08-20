@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CarSpecs from '../components/CarSpecs.astro';
+---
+
+<Layout title="El Auto | Akros Vulpes FSAE">
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <div class="tech-tag font-tech">VEHICLE DATA // CV-01</div>
+      <h1 class="page-title">El <span class="text-gradient-red">Monoplaza</span></h1>
+      <p class="page-desc">
+        Cada pieza diseñada con un propósito. Cada gramo optimizado para la velocidad. Conoce el corazón mecánico de Akros Vulpes.
+      </p>
+    </div>
+  </section>
+
+  <CarSpecs />
+</Layout>
+
+<style>
+  .page-hero {
+    min-height: 40vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 8rem 2rem 3rem 2rem;
+    text-align: center;
+  }
+
+  .page-hero-content {
+    max-width: 700px;
+  }
+
+  .page-title {
+    font-size: 3.5rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+    letter-spacing: -0.03em;
+  }
+
+  .page-desc {
+    color: var(--color-gris-andino);
+    font-size: 1.15rem;
+    line-height: 1.6;
+  }
+</style>

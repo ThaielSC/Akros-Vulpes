@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProgressTracker from '../components/ProgressTracker.astro';
+---
+
+<Layout title="Desarrollo | Akros Vulpes FSAE">
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <div class="tech-tag font-tech">SYSTEM STATUS // MANUFACTURING PIPELINE</div>
+      <h1 class="page-title">Línea de <span class="text-gradient-red">Desarrollo</span></h1>
+      <p class="page-desc">
+        Seguimiento en tiempo real de cada fase de diseño, manufactura y pruebas de nuestro monoplaza de combustión.
+      </p>
+    </div>
+  </section>
+
+  <ProgressTracker />
+</Layout>
+
+<style>
+  .page-hero {
+    min-height: 40vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 8rem 2rem 3rem 2rem;
+    text-align: center;
+  }
+
+  .page-hero-content {
+    max-width: 700px;
+  }
+
+  .page-title {
+    font-size: 3.5rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+    letter-spacing: -0.03em;
+  }
+
+  .page-desc {
+    color: var(--color-gris-andino);
+    font-size: 1.15rem;
+    line-height: 1.6;
+  }
+</style>

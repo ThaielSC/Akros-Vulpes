@@ -1,0 +1,375 @@
+---
+const phases = [
+  {
+    id: "01",
+    title: "Diseño Conceptual",
+    status: "completado",
+    progress: 100,
+    desc: "Estudio de dinámicas, selección de perfiles tubulares para el chasis y empaquetamiento preliminar de componentes del motor.",
+    details: ["Definición de cotas de suspensión", "Simulaciones iniciales de rigidez torsional", "Cálculo de relación de transmisión inicial"]
+  },
+  {
+    id: "02",
+    title: "Modelado CAD & Simulación",
+    status: "completado",
+    progress: 100,
+    desc: "Diseño 3D completo en CAD del chasis y elementos de suspensión. Análisis de elementos finitos (FEA) estructural.",
+    details: ["Optimización topológica de masas no suspendidas", "Simulación CFD de flujo aerodinámico preliminar", "Ruteo del arnés eléctrico"]
+  },
+  {
+    id: "03",
+    title: "Manufactura y Mecanizado",
+    status: "progreso",
+    progress: 65,
+    desc: "Corte y doblado de tubos de acero SAE 4130, soldadura del chasis TIG y fresado CNC de manguetas y componentes de suspensión.",
+    details: ["Soldadura del chasis en plantilla (jig)", "Mecanizado de masas traseras y delanteras", "Laminado de paneles de cortafuegos de aluminio"]
+  },
+  {
+    id: "04",
+    title: "Ensamblaje e Integración",
+    status: "pendiente",
+    progress: 15,
+    desc: "Montaje del motor monocilíndrico, sistema de admisión/escape personalizado y ensamble de la suspensión delantera/trasera.",
+    details: ["Montaje del tren motriz", "Ajuste de amortiguadores Öhlins", "Conexión del panel de instrumentos digital"]
+  },
+  {
+    id: "05",
+    title: "Calibración y Pruebas",
+    status: "pendiente",
+    progress: 0,
+    desc: "Puesta a punto del motor en dinamómetro, pruebas de frenado FSAE (Brake Test) y afinamiento de suspensión en pista.",
+    details: ["Mapeo de inyección en banco de pruebas", "Prueba de inclinación a 60 grados (Tilt Test)", "Pruebas dinámicas de aceleración y skidpad"]
+  }
+];
+---
+
+<section id="progreso" class="progress-section">
+  <div class="section-header">
+    <div class="tech-tag font-tech">SYSTEM STATUS // TIMELINE</div>
+    <h2 class="section-title">Línea de <span class="text-gradient-red">Progreso</span></h2>
+    <p class="section-subtitle">
+      Monitoreo en tiempo real de las etapas de desarrollo de nuestro monoplaza de combustión para la temporada.
+    </p>
+  </div>
+
+  <div class="timeline-container">
+    <div class="timeline-line">
+      <div class="timeline-line-fill" style="height: 55%;"></div>
+    </div>
+    
+    <div class="phases-wrapper">
+      {phases.map((phase) => (
+        <div class={`phase-node ${phase.status === 'completado' ? 'node-done' : phase.status === 'progreso' ? 'node-active' : 'node-pending'}`}>
+          <div class="phase-indicator">
+            <span class="font-tech">{phase.id}</span>
+            <div class="pulse-ring"></div>
+          </div>
+          
+          <div class="phase-card bevel-card">
+            <div class="card-header">
+              <div class="header-left">
+                <span class="font-tech phase-pct">{phase.progress}%</span>
+                <h3>{phase.title}</h3>
+              </div>
+              <span class={`status-tag font-tech status-${phase.status}`}>
+                {phase.status.toUpperCase()}
+              </span>
+            </div>
+            
+            <p class="phase-desc">{phase.desc}</p>
+            
+            <div class="tech-progress-bar">
+              <div class="progress-fill" style={`width: ${phase.progress}%`}></div>
+            </div>
+
+            <div class="phase-details">
+              <h4 class="font-tech">SUB-TAREAS CLAVE:</h4>
+              <ul>
+                {phase.details.map((detail) => (
+                  <li>
+                    <span class="bullet-tech"></span>
+                    <span>{detail}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .progress-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+    position: relative;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .tech-tag {
+    font-size: 0.8rem;
+    color: var(--color-oro-andino);
+    letter-spacing: 0.2em;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-size: 3rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+    letter-spacing: -0.03em;
+  }
+
+  .section-subtitle {
+    color: var(--color-gris-andino);
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+  }
+
+  /* Timeline Grid */
+  .timeline-container {
+    position: relative;
+    padding-left: 3rem;
+  }
+
+  .timeline-line {
+    position: absolute;
+    top: 0;
+    left: 1.15rem;
+    width: 4px;
+    height: 100%;
+    background: rgba(138, 138, 130, 0.15);
+  }
+
+  .timeline-line-fill {
+    width: 100%;
+    background: linear-gradient(to bottom, var(--color-oro-andino), var(--color-rojo-culpeo));
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 2px;
+    box-shadow: 0 0 12px var(--color-rojo-culpeo);
+  }
+
+  .phases-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+  }
+
+  .phase-node {
+    display: flex;
+    position: relative;
+  }
+
+  .phase-indicator {
+    position: absolute;
+    left: -3rem;
+    top: 1.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: var(--color-negro);
+    border: 2px solid var(--color-gris-andino);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    font-size: 0.85rem;
+    color: var(--color-gris-andino);
+    transition: all 0.3s ease;
+  }
+
+  .pulse-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  /* States styling */
+  .node-done .phase-indicator {
+    border-color: var(--color-oro-andino);
+    color: var(--color-oro-andino);
+    box-shadow: 0 0 8px rgba(184, 150, 106, 0.3);
+  }
+
+  .node-active .phase-indicator {
+    border-color: var(--color-rojo-culpeo);
+    color: var(--color-rojo-culpeo);
+    font-weight: bold;
+  }
+
+  .node-active .pulse-ring {
+    border: 2px solid var(--color-rojo-culpeo);
+    animation: ping 1.5s infinite ease-out;
+    opacity: 0.6;
+  }
+
+  .node-pending .phase-indicator {
+    border-style: dashed;
+  }
+
+  @keyframes ping {
+    0% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1.6);
+      opacity: 0;
+    }
+  }
+
+  /* Phase Card details */
+  .phase-card {
+    width: 100%;
+    padding: 2rem;
+    margin-left: 1rem;
+    background: var(--color-carbon);
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.25rem;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .phase-pct {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-oro-andino);
+  }
+
+  .node-active .phase-pct {
+    color: var(--color-rojo-culpeo);
+  }
+
+  .node-pending .phase-pct {
+    color: var(--color-gris-andino);
+  }
+
+  .card-header h3 {
+    font-size: 1.5rem;
+    color: var(--color-blanco-hueso);
+    letter-spacing: -0.01em;
+  }
+
+  .status-tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+  }
+
+  .status-completado {
+    background: rgba(184, 150, 106, 0.15);
+    border: 1px solid var(--color-oro-andino);
+    color: var(--color-oro-andino);
+  }
+
+  .status-progreso {
+    background: rgba(193, 82, 42, 0.15);
+    border: 1px solid var(--color-terracota);
+    color: var(--color-terracota);
+  }
+
+  .status-pendiente {
+    background: rgba(138, 138, 130, 0.05);
+    border: 1px solid rgba(138, 138, 130, 0.2);
+    color: var(--color-gris-andino);
+  }
+
+  .phase-desc {
+    color: var(--color-gris-andino);
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    max-width: 800px;
+  }
+
+  /* Telemetry Progress Bar */
+  .tech-progress-bar {
+    height: 4px;
+    background: rgba(138, 138, 130, 0.1);
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-terracota), var(--color-rojo-culpeo));
+    transition: width 1s ease-in-out;
+  }
+
+  .node-done .progress-fill {
+    background: var(--color-oro-andino);
+  }
+
+  /* Subtasks list */
+  .phase-details h4 {
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    color: var(--color-blanco-hueso);
+    margin-bottom: 0.75rem;
+  }
+
+  .phase-details ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .phase-details li {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--color-gris-andino);
+  }
+
+  .bullet-tech {
+    width: 6px;
+    height: 6px;
+    background: var(--color-rojo-culpeo);
+    margin-right: 10px;
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  .node-done .bullet-tech {
+    background: var(--color-oro-andino);
+  }
+
+  .node-pending .bullet-tech {
+    background: var(--color-gris-andino);
+  }
+
+  @media (max-width: 768px) {
+    .phase-details ul {
+      grid-template-columns: 1fr;
+    }
+    .card-header {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,225 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SponsorsComponent from '../components/Sponsors.astro';
+---
+
+<Layout title="Sponsors & Contacto | Akros Vulpes FSAE">
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <div class="tech-tag font-tech">PARTNERSHIP // ALLIANCES</div>
+      <h1 class="page-title">Nuestros <span class="text-gradient-gold">Partners</span></h1>
+      <p class="page-desc">
+        El combustible detrás de nuestro proyecto. Alianzas estratégicas que hacen posible la innovación y la ingeniería de vanguardia.
+      </p>
+    </div>
+  </section>
+
+  <SponsorsComponent />
+
+  <!-- Contact Form -->
+  <section id="contacto" class="contact-section">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="tech-tag font-tech">JOIN THE PACK // CONTACTO</div>
+        <h2 class="contact-title">¿Listo para <span class="text-gradient-red">Acelerar</span>?</h2>
+        <p>
+          Si eres estudiante de la Universidad de los Andes y te apasiona la ingeniería automotriz, el desarrollo de software de telemetría, el marketing deportivo o las finanzas, queremos conocerte.
+        </p>
+        <p>
+          Las empresas interesadas en patrocinar nuestro proyecto pueden solicitar nuestro dossier de patrocinio técnico y comercial utilizando este formulario.
+        </p>
+        
+        <div class="info-badges font-tech">
+          <div class="info-badge">
+            <span class="label">UBICACIÓN:</span>
+            <span class="val">SANTIAGO, CHILE</span>
+          </div>
+          <div class="info-badge">
+            <span class="label">TALLER:</span>
+            <span class="val">EDIFICIO DE INGENIERÍA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-container bevel-card">
+        <form class="racing-form" onsubmit="event.preventDefault(); alert('Mensaje simulado enviado con éxito.');">
+          <div class="form-row">
+            <div class="input-group">
+              <label for="name" class="font-tech">Nombre Completo</label>
+              <input type="text" id="name" required placeholder="Ej. Ignacio Pérez" />
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="input-group">
+              <label for="email" class="font-tech">Correo Electrónico</label>
+              <input type="email" id="email" required placeholder="ignacio@miuandes.cl" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="input-group">
+              <label for="interest" class="font-tech">Interés principal</label>
+              <select id="interest" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="ingreso">Postular como Alumno (Ingeniería)</option>
+                <option value="sponsorship">Alianzas y Patrocinios (Empresas)</option>
+                <option value="marketing">Postular como Alumno (Marketing/Finanzas)</option>
+                <option value="otro">Otras consultas</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="input-group">
+              <label for="message" class="font-tech">Mensaje</label>
+              <textarea id="message" rows="4" required placeholder="Cuéntanos sobre ti o tu empresa..."></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-racing"><span>Enviar Transmisión</span></button>
+        </form>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    min-height: 40vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 8rem 2rem 3rem 2rem;
+    text-align: center;
+  }
+
+  .page-hero-content {
+    max-width: 700px;
+  }
+
+  .page-title {
+    font-size: 3.5rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+    letter-spacing: -0.03em;
+  }
+
+  .page-desc {
+    color: var(--color-gris-andino);
+    font-size: 1.15rem;
+    line-height: 1.6;
+  }
+
+  /* Contact Section */
+  .contact-section {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: var(--section-padding);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contact-title {
+    font-size: 2.75rem;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-info p {
+    color: var(--color-gris-andino);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+
+  .info-badges {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .info-badge {
+    background: rgba(30, 30, 26, 0.6);
+    border: 1px dashed rgba(138, 138, 130, 0.3);
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .info-badge .label {
+    font-size: 0.65rem;
+    color: var(--color-oro-andino);
+    letter-spacing: 0.1em;
+  }
+
+  .info-badge .val {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: var(--color-blanco-hueso);
+  }
+
+  /* Form Styling */
+  .contact-form-container {
+    padding: 3rem;
+  }
+
+  .racing-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .input-group label {
+    font-size: 0.75rem;
+    color: var(--color-oro-andino);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .input-group input, 
+  .input-group select, 
+  .input-group textarea {
+    background: var(--color-negro);
+    border: 1px solid rgba(138, 138, 130, 0.3);
+    color: var(--color-blanco-hueso);
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+  }
+
+  .input-group textarea {
+    resize: none;
+  }
+
+  .input-group input:focus, 
+  .input-group select:focus, 
+  .input-group textarea:focus {
+    outline: none;
+    border-color: var(--color-rojo-culpeo);
+    box-shadow: 0 0 8px rgba(139, 58, 31, 0.3);
+    background: rgba(30, 30, 26, 0.4);
+  }
+
+  @media (max-width: 900px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .contact-form-container {
+      padding: 2rem 1.5rem;
+    }
+  }
+</style>

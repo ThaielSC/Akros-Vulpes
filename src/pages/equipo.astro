@@ -1,0 +1,254 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const divisions = [
+  {
+    name: "CHASIS & SUSPENSIÓN",
+    lead: "Diseño Estructural & Dinámica",
+    desc: "Encargados del esqueleto del auto (tubular SAE 4130) y del sistema de suspensión pushrod. Su misión es mantener el auto pegado al suelo en las curvas más cerradas.",
+    stats: "12 Miembros // 4 Licencias CAD"
+  },
+  {
+    name: "POWERTRAIN (MOTOR)",
+    lead: "Termodinámica & Transmisión",
+    desc: "Afinan el motor monocilíndrico de 450cc. Diseñan la admisión impresa en 3D, el escape de acero inoxidable y calibran la inyección electrónica para exprimir cada caballo de fuerza.",
+    stats: "9 Miembros // Banco de Pruebas Motorex"
+  },
+  {
+    name: "ELECTRÓNICA & ADQUISICIÓN",
+    lead: "Telemetría & Sistemas Eléctricos",
+    desc: "Desarrollan el cableado (arnés) de competición, integran la ECU MoTeC, sensores de telemetría en tiempo real y la interfaz de usuario en el volante para el piloto.",
+    stats: "8 Miembros // 24 Sensores Activos"
+  },
+  {
+    name: "AERODINÁMICA",
+    lead: "Dinámica de Fluidos (CFD)",
+    desc: "Diseñan alerones de fibra de carbono para generar carga aerodinámica (downforce) que incremente la velocidad de paso por curva, usando simulaciones avanzadas de CFD.",
+    stats: "6 Miembros // Túnel de Viento Virtual"
+  },
+  {
+    name: "MARKETING & OPERACIONES",
+    lead: "Gestión Comercial & Logística",
+    desc: "Administran el presupuesto del equipo, la relación con patrocinadores, logística para competencias internacionales, la identidad visual y las redes sociales de la escudería.",
+    stats: "5 Miembros // Eventos y Alianzas"
+  }
+];
+---
+
+<Layout title="El Equipo | Akros Vulpes FSAE">
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <div class="tech-tag font-tech">DIVISIONS // CREW</div>
+      <h1 class="page-title">El <span class="text-gradient-red">Equipo</span></h1>
+      <p class="page-desc">
+        Una estructura multidisciplinaria donde cada pieza encaja para lograr el máximo desempeño en pista.
+      </p>
+    </div>
+  </section>
+
+  <section class="team-section">
+    <div class="divisions-accordion">
+      {divisions.map((div, idx) => (
+        <div class="div-item bevel-card" data-division>
+          <div class="div-header">
+            <span class="div-num font-tech">0{idx + 1}</span>
+            <div class="div-title-group">
+              <h3>{div.name}</h3>
+              <span class="div-lead font-tech">{div.lead}</span>
+            </div>
+            <span class="div-arrow"></span>
+          </div>
+          
+          <div class="div-content">
+            <p>{div.desc}</p>
+            <div class="div-footer">
+              <span class="div-stats font-tech">{div.stats}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <script>
+    // Accordion interactive division expander
+    function initAccordion() {
+      const divItems = document.querySelectorAll('[data-division]');
+      divItems.forEach((item) => {
+        item.addEventListener('click', () => {
+          const isActive = item.classList.contains('div-active');
+          divItems.forEach((el) => el.classList.remove('div-active'));
+          if (!isActive) {
+            item.classList.add('div-active');
+          }
+        });
+      });
+      // Open first by default
+      if (divItems.length > 0) {
+        divItems[0].classList.add('div-active');
+      }
+    }
+
+    // Re-run on View Transition navigation
+    initAccordion();
+    document.addEventListener('astro:after-swap', initAccordion);
+  </script>
+</Layout>
+
+<style>
+  .page-hero {
+    min-height: 40vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 8rem 2rem 3rem 2rem;
+    text-align: center;
+  }
+
+  .page-hero-content {
+    max-width: 700px;
+  }
+
+  .page-title {
+    font-size: 3.5rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+    letter-spacing: -0.03em;
+  }
+
+  .page-desc {
+    color: var(--color-gris-andino);
+    font-size: 1.15rem;
+    line-height: 1.6;
+  }
+
+  /* Team Section */
+  .team-section {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: var(--section-padding);
+  }
+
+  .divisions-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .div-item {
+    /* Extra padding to keep text away from bevel edges */
+    padding: 2rem 2.5rem;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  .div-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+  }
+
+  .div-num {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-rojo-culpeo);
+    flex-shrink: 0;
+  }
+
+  .div-title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .div-title-group h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    letter-spacing: 0.02em;
+    color: var(--color-blanco-hueso);
+  }
+
+  .div-lead {
+    font-size: 0.75rem;
+    color: var(--color-oro-andino);
+    letter-spacing: 0.05em;
+  }
+
+  .div-arrow {
+    position: absolute;
+    right: 0;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid var(--color-gris-andino);
+    border-bottom: 2px solid var(--color-gris-andino);
+    transform: rotate(45deg);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Content area (hidden by default) */
+  .div-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    /* Extra top margin when open to separate from header */
+    margin-top: 0;
+    padding-left: 3.5rem;
+  }
+
+  .div-content p {
+    color: var(--color-gris-andino);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+    padding-top: 1.25rem;
+  }
+
+  .div-footer {
+    display: flex;
+    border-top: 1px dashed rgba(138, 138, 130, 0.15);
+    padding-top: 1rem;
+  }
+
+  .div-stats {
+    font-size: 0.75rem;
+    color: var(--color-oro-andino);
+    letter-spacing: 0.05em;
+  }
+
+  /* Active State */
+  .div-item:global(.div-active) {
+    transform: translateY(0);
+  }
+
+  .div-item:global(.div-active)::before {
+    background: var(--color-rojo-culpeo);
+  }
+
+  .div-item:global(.div-active) .div-arrow {
+    transform: rotate(-135deg);
+    border-color: var(--color-rojo-culpeo);
+  }
+
+  .div-item:global(.div-active) .div-content {
+    max-height: 250px;
+    opacity: 1;
+    margin-top: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .div-item {
+      padding: 1.5rem 1.75rem;
+    }
+    .div-header {
+      gap: 1.25rem;
+    }
+    .div-content {
+      padding-left: 0;
+    }
+  }
+</style>

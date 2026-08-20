@@ -1,0 +1,301 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:ital,wght@0,400;0,700;0,800;0,900;1,800;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  /* Color Palette */
+  --color-negro: #0A0A0A;
+  --color-carbon: #1E1E1A;
+  --color-gris-andino: #8A8A82;
+  --color-oro-andino: #B8966A;
+  --color-terracota: #C1522A;
+  --color-rojo-culpeo: #8B3A1F;
+  --color-blanco-hueso: #F5F2EE;
+
+  /* Typography */
+  --font-headings: 'Outfit', sans-serif;
+  --font-technical: 'Space Mono', monospace;
+  --font-body: 'Inter', sans-serif;
+
+  /* Layout */
+  --section-padding: 6rem 2rem;
+  --max-width: 1200px;
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: var(--color-negro);
+  color: var(--color-blanco-hueso);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-negro);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-carbon);
+  border: 2px solid var(--color-negro);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-rojo-culpeo);
+}
+
+/* Typography styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headings);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+/* Italic text anti-clip: slanted glyphs extend past their box.
+   Extra padding-right prevents the last character from being cut. */
+h1, h2, h3 {
+  padding-right: 0.15em;
+}
+
+/* Engineering/Technical Blueprints Background */
+.blueprint-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(138, 138, 130, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(138, 138, 130, 0.05) 1px, transparent 1px);
+  position: relative;
+}
+
+.blueprint-grid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(rgba(138, 138, 130, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================
+   BEVEL CARDS
+   Using pseudo-element borders to avoid clip-path + border conflict.
+   The card uses clip-path for shape, but the visible "border" is drawn
+   by an ::after pseudo-element with the same clip-path and a background.
+   ============================ */
+.bevel-card {
+  background: var(--color-carbon);
+  position: relative;
+  clip-path: polygon(
+    0 0, 
+    calc(100% - 14px) 0, 
+    100% 14px, 
+    100% 100%, 
+    14px 100%, 
+    0 calc(100% - 14px)
+  );
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Pseudo-element border trick: a slightly larger shape behind the card */
+.bevel-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: rgba(138, 138, 130, 0.2);
+  clip-path: polygon(
+    0 0, 
+    calc(100% - 14px) 0, 
+    100% 14px, 
+    100% 100%, 
+    14px 100%, 
+    0 calc(100% - 14px)
+  );
+  z-index: -1;
+  transition: background 0.3s ease;
+}
+
+.bevel-card:hover {
+  transform: translateY(-4px);
+}
+
+.bevel-card:hover::before {
+  background: var(--color-rojo-culpeo);
+}
+
+/* ============================
+   RACING BUTTONS
+   Using a wrapper approach: the skewed shape is the button background itself.
+   The text inside is counter-skewed so it reads straight.
+   No clip-path + border conflict.
+   ============================ */
+.btn-racing {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2.5rem;
+  background: var(--color-rojo-culpeo);
+  color: var(--color-blanco-hueso);
+  font-family: var(--font-headings);
+  font-weight: 800;
+  font-style: italic;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  border: none;
+  cursor: pointer;
+  transform: skewX(-8deg);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Counter-skew the text content so it stays readable */
+.btn-racing > * {
+  transform: skewX(8deg);
+}
+
+.btn-racing::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent, 
+    rgba(245, 242, 238, 0.15), 
+    transparent
+  );
+  transition: left 0.6s ease;
+  z-index: -1;
+}
+
+.btn-racing:hover {
+  background: var(--color-terracota);
+  box-shadow: 0 0 20px rgba(193, 82, 42, 0.4);
+}
+
+.btn-racing:hover::after {
+  left: 100%;
+}
+
+.btn-racing-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2.5rem;
+  background: transparent;
+  color: var(--color-blanco-hueso);
+  font-family: var(--font-headings);
+  font-weight: 800;
+  font-style: italic;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  border: 1px solid var(--color-gris-andino);
+  cursor: pointer;
+  transform: skewX(-8deg);
+  transition: all 0.3s ease;
+}
+
+.btn-racing-secondary > * {
+  transform: skewX(8deg);
+}
+
+.btn-racing-secondary:hover {
+  background: rgba(245, 242, 238, 0.05);
+  border-color: var(--color-oro-andino);
+  color: var(--color-oro-andino);
+}
+
+/* ============================
+   SECTION UTILITIES
+   ============================ */
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.tech-tag {
+  font-family: var(--font-technical);
+  font-size: 0.8rem;
+  color: var(--color-oro-andino);
+  letter-spacing: 0.2em;
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-size: 3rem;
+  font-style: italic;
+  margin-bottom: 1rem;
+  letter-spacing: -0.03em;
+}
+
+.section-subtitle {
+  color: var(--color-gris-andino);
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+    box-shadow: 0 0 10px rgba(139, 58, 31, 0.2);
+  }
+  50% {
+    opacity: 0.9;
+    box-shadow: 0 0 20px rgba(139, 58, 31, 0.5);
+  }
+}
+
+.glow-effect {
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+/* Text Gradients
+   display:inline-block + padding-right prevents italic clipping
+   on the gradient span itself. */
+.text-gradient-red {
+  background: linear-gradient(135deg, var(--color-terracota), var(--color-rojo-culpeo));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  padding-right: 0.1em;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, var(--color-oro-andino), #d5b88f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  padding-right: 0.1em;
+}
+
+.font-tech {
+  font-family: var(--font-technical);
+}

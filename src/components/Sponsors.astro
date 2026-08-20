@@ -1,0 +1,275 @@
+---
+const tiers = [
+  {
+    name: "TIER 01 // TITANIO",
+    desc: "Socio tecnológico principal. Presencia destacada en el chasis, alerones del monoplaza y ropa oficial del equipo.",
+    slots: 2,
+    color: "var(--color-rojo-culpeo)"
+  },
+  {
+    name: "TIER 02 // ORO ANDINO",
+    desc: "Socio técnico estratégico. Logotipo en los laterales de la carrocería, web oficial y material audiovisual.",
+    slots: 3,
+    color: "var(--color-oro-andino)"
+  },
+  {
+    name: "TIER 03 // PLATA",
+    desc: "Colaborador de equipamiento y consumibles. Logotipo en la sección web de patrocinadores y taller de desarrollo.",
+    slots: 4,
+    color: "var(--color-gris-andino)"
+  }
+];
+---
+
+<section id="sponsors" class="sponsors-section">
+  <div class="section-header">
+    <div class="tech-tag font-tech">PARTNERSHIP // SPONSORS</div>
+    <h2 class="section-title">Nuestros <span class="text-gradient-gold">Patrocinadores</span></h2>
+    <p class="section-subtitle">
+      El combustible de nuestro proyecto. Alianzas estratégicas que hacen posible la innovación y manufactura de ingeniería de vanguardia.
+    </p>
+  </div>
+
+  <div class="sponsors-tiers">
+    {tiers.map((tier) => (
+      <div class="tier-card">
+        <div class="tier-info">
+          <h3 class="font-tech" style={`color: ${tier.color};`}>{tier.name}</h3>
+          <p>{tier.desc}</p>
+        </div>
+        
+        <div class="slots-grid">
+          {Array.from({ length: tier.slots }).map((_, idx) => (
+            <div class="slot-placeholder bevel-card">
+              <div class="slot-inner">
+                <span class="font-tech slot-id">SLOT {idx + 1}</span>
+                <span class="slot-text">TU MARCA AQUÍ</span>
+                <span class="corner-cross"></span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Invitation Call to Action Card -->
+  <div class="cta-sponsor-card bevel-card blueprint-grid">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <h3 class="text-gradient-red">¿Quieres ser parte de la escudería?</h3>
+        <p>
+          Únete como socio comercial o tecnológico. Impulsa el talento joven en ingeniería, manufactura avanzada y gestión deportiva en Chile.
+        </p>
+      </div>
+      <div class="cta-buttons">
+        <a href="#contacto" class="btn-racing">Escríbenos</a>
+        <a href="#" class="btn-racing-secondary font-tech">Descargar Dossier (.PDF)</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sponsors-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+    position: relative;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .tech-tag {
+    font-size: 0.8rem;
+    color: var(--color-oro-andino);
+    letter-spacing: 0.2em;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-size: 3rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+    letter-spacing: -0.03em;
+  }
+
+  .section-subtitle {
+    color: var(--color-gris-andino);
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+  }
+
+  /* Tiers layout */
+  .sponsors-tiers {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    margin-bottom: 6rem;
+  }
+
+  .tier-card {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .tier-info h3 {
+    font-size: 1.25rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+
+  .tier-info p {
+    color: var(--color-gris-andino);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 320px;
+  }
+
+  .slots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .slot-placeholder {
+    height: 110px;
+    background: rgba(30, 30, 26, 0.5);
+    border: 1px dashed rgba(138, 138, 130, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .slot-placeholder:hover {
+    border: 1px solid var(--color-oro-andino);
+    background: rgba(184, 150, 106, 0.03);
+    box-shadow: 0 0 15px rgba(184, 150, 106, 0.1);
+  }
+
+  .tier-card:nth-child(1) .slot-placeholder:hover {
+    border-color: var(--color-rojo-culpeo);
+    background: rgba(139, 58, 31, 0.03);
+    box-shadow: 0 0 15px rgba(139, 58, 31, 0.1);
+  }
+
+  .slot-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .slot-id {
+    font-size: 0.65rem;
+    color: var(--color-gris-andino);
+    letter-spacing: 0.1em;
+  }
+
+  .slot-text {
+    font-family: var(--font-headings);
+    font-weight: 800;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    color: rgba(245, 242, 238, 0.15);
+    transition: color 0.3s ease;
+  }
+
+  .slot-placeholder:hover .slot-text {
+    color: var(--color-blanco-hueso);
+  }
+
+  .corner-cross::before, .corner-cross::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-color: rgba(138, 138, 130, 0.3);
+    border-style: solid;
+  }
+
+  .slot-placeholder:hover .corner-cross::before,
+  .slot-placeholder:hover .corner-cross::after {
+    border-color: var(--color-oro-andino);
+  }
+
+  .tier-card:nth-child(1) .slot-placeholder:hover .corner-cross::before,
+  .tier-card:nth-child(1) .slot-placeholder:hover .corner-cross::after {
+    border-color: var(--color-rojo-culpeo);
+  }
+
+  /* Top Left corner */
+  .corner-cross::before {
+    top: 8px;
+    left: 8px;
+    border-width: 1px 0 0 1px;
+  }
+  /* Bottom Right corner */
+  .corner-cross::after {
+    bottom: 8px;
+    right: 8px;
+    border-width: 0 1px 1px 0;
+  }
+
+  /* CTA sponsor card */
+  .cta-sponsor-card {
+    background: var(--color-carbon);
+    padding: 3.5rem 3rem;
+    border: 1px solid rgba(139, 58, 31, 0.2);
+    margin-top: 2rem;
+  }
+
+  .cta-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .cta-text h3 {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+    font-style: italic;
+  }
+
+  .cta-text p {
+    color: var(--color-gris-andino);
+    max-width: 650px;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .cta-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 260px;
+  }
+
+  @media (max-width: 900px) {
+    .tier-card {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .tier-info p {
+      max-width: 100%;
+    }
+    .cta-inner {
+      flex-direction: column;
+      text-align: center;
+      gap: 2rem;
+    }
+    .cta-buttons {
+      width: 100%;
+    }
+  }
+</style>
